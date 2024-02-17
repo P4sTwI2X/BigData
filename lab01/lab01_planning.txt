@@ -1,0 +1,12 @@
+# Normal route.
+
+- 1 person on Word Count, 2 people on 2 questions each of MapReduce.
+
+# Bonus route.
+## Path 1.
+- 1 person on Word Count + MapReduce.
+- 2 people on Bonus.
+
+## Path 2.
+- 1 person on Word Count to seminar (will be updated on what part).
+- 2 people on MapReduce to Bonus.

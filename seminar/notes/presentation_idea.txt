@@ -1,0 +1,21 @@
+Presentation time: 30 minutes, including demo.
+------------------
+
+3 image tools: Dall-e Midjourney ImageGen.
+
+Presentation:
+0. Intro: why do we need image generation? why do we choose this topic? (quick'n'short). [not much]
+1. How each image tool works.
+	+ Idea, algorithm. [Note: remember what kind of audience we are presenting for]
+2. Comparison.
+	+ Best usage. (When? Why? Confusion map?)
+	+ Combination(?).
+3. What to expect from the future (?)
+	+ Legal issues and moral, ethical concerns.
+4. Demo:
+	+ Idea
+		+ Usage of each tool(?)
+			+ Choose one problem and try to apply the problem on the tools, compare answers.
+		+ Application of the (selected) tools into Big Data(?)
+			+ Choose one problem and apply the combination of the tools, including the APIs in-between.
+	+ When, Where is the demo applicated?
