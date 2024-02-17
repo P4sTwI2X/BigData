@@ -6,7 +6,7 @@ Overall requirements:
 - Class evaluation (10%): class voting, etc.
 
 Seminar: W10, slides 3 days prior.
-Starting: W4. [W0-5]
+Starting: W4. [W0-5] 
 
 W0: preliminary research.
 	+ Presentation & demo idea.
@@ -14,6 +14,6 @@ W0: preliminary research.
 W1: in-depth research.
 	+ Demo the usage of each tool.
 	+ How each tool works in the code.
-W2: demo research.
+W2-3: demo research.
 	+ Demo idea and scheduling.
-
+W4-5: 

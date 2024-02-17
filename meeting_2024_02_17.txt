@@ -1,0 +1,16 @@
+-----Seminar-----
+
+To Feb 24th, research on how each image generation tool works:
+- Thien: Dall-e
+- Long: ImageGen
+- Kiet: Midjourney.
+
+Feb 24th, 8pm. Meet again to decide on the demo idea for Feb 25th submission.
+
+
+-----Lab 01-----
+
+Also on Feb 24th meeting to decide on Lab 01 work division.
+Please check if you have enough time for the upcoming week for the bonus section.
+
+Make sure that everyone has already installed Hadoop by the meeting.
