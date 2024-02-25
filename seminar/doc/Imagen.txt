@@ -1,0 +1,35 @@
+1. Introduction	
+- Imagen is a text-to-image developed by google, it can help people express their artistic self without having to learn how to draw. 
+- Note: Since I can’t find anything about Imagen, I’ll be talking about Imagen 2 instead which is available in Gemini.
+- Motivations: delivering high-quality, photorealistic images that are closely aligned and consistent with the user’s prompt, generate more lifelike images by using the natural distribution of its training data, instead of adopting a pre-programmed style.
+- Imagen evolution:
+  + Early stage: Research about AI, and algorithm to generate image
+  + Development stage: Feed data to AI to learn
+  + Beta stage: Google launched the Trusted Tester Program, granting access for limited users.
+  + Release stage: Imagen 2 was released on December 13, 2023 and is available in Gemini (google bard AI).
+2. A deeper insight to the selected solution
+2.1. Major components and main functionalities: 
+- Major components in Imagen: 
+  + Text Encoder (Transformer encoder): This component will convert the user input (text) into a numerical representation that encapsulates the semantic information within the text.
+  + Image-generator: This component will generate an image using the information got from the encoder using diffusion model.+ 
+  + Super-Resolution model: This component will scale up the image obtained from the image-generator while maintaining high resolution.
+- Main functionalities:
+  + Text to image: Generate image from text prompt
+  + Image editing: Edit image or part of image using text prompt
+  + Visual caption: Generate captions from images, getting informative text responses to questions about image details.
+2.2. Its applications in academic and/or industry activities
+- In academic activities: 
+  + Scientific illustrations: Professors or students can use this AI to generate images of certain things to help them understand the topic clearer.
+  + Data visualization: Researchers can use Imagen to generate visualization from their data for further research.
+- In industry activities:
+  + Logo design: The AI can be used to generate realistic logos that suit their needs.
+Advertising: Combine the text to image and visual caption, companies can quickly create a design for their advertisement.
+2.3. Its popularity (i.e., how many users choose this solution)
+I can’t find any information about its popularity. However, I’m certain that many companies are using it right now.
+2.4. Identify other solutions that have similar functionalities and compare them on different aspects:
+- Imagen strength: 
+  + High-quality photo: Imagen can generate high-resolution images 
+  + Advanced painting and editing: Imagen allows you to edit only parts of an uploaded or generated image using a mask area you define.
+- Imagen weakness: 
+  + Limited access: although Imagen 2 is available in Gemini, but it is a free version and is not as strong as the paid version
+  + Limited style: User have less control over style compared to Midjourney
