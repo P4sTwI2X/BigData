@@ -33,3 +33,10 @@ I can’t find any information about its popularity. However, I’m certain that
 - Imagen weakness: 
   + Limited access: although Imagen 2 is available in Gemini, but it is a free version and is not as strong as the paid version
   + Limited style: User have less control over style compared to Midjourney
+
+- Sources: 
++ https://www.assemblyai.com/blog/how-imagen-actually-works/
++ https://cloud.google.com/vertex-ai/docs/generative-ai/image/notebooks-samples
++ https://cloud.google.com/blog/products/ai-machine-learning/imagen-2-on-vertex-ai-is-now-generally-available
++ https://imagen.research.google/
++ https://blog.google/technology/ai/google-imagen-2/
