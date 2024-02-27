@@ -1,8 +1,10 @@
 Paper Reading
 1. How do the input keys-values, the intermediate keys-values, and the output keys-values relate? 
 
-The input keys and values are drawn from a different domain than the output keys and values. Furthermore,
-the intermediate keys and values are from the same domain as the output keys and values
+
+The input key-value pairs are made by dividing the input data into smaller blocks and mapping those blocks with corresponding key-value pairs, while output key-value pairs are from the Reduce section of MapReduce. Hence the input keys and values are drawn from a different domain than the output keys and values. 
+
+Furthermore, the intermediate keys and values are from the same domain as the output keys and values, since the they are both outputs of functions which the inputs are in the type of key-value pairs.
 
 2. How does MapReduce deal with node failures?
 
