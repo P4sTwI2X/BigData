@@ -36,7 +36,7 @@ In this exercise, each member has installed a single node Hadoop cluster by foll
 |-----|------------|----------------- | --- | -- |
 |  1  |  21127329  | Châu Tấn Kiệt    | ![](./images//21127329/hadoop.jpg) | ![](./images//21127329/run_wordlength.png) |
 |  2  |  21127170  | Nguyễn Thế Thiện | |  
-|  3  |  21127642  | Trịnh Minh Long  | | | 
+|  3  |  21127642  | Trịnh Minh Long  | ![](./images//21127642/21127642_hadoop(6).webp) | ![](./images//21127642/21127642_wordcount_result.png) |
 
 
 ## 2. Paper Reading
