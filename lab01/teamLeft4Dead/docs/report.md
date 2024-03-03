@@ -51,25 +51,25 @@ In this exercise, each member has installed a single node Hadoop cluster by foll
 ## 2. Paper Reading
 We read and analyzed the original paper of MapReduce by Dean and Ghemawat and then answer the given questions:
 
-### 1. How do the input keys-values, the intermediate keys-values, and the output keys-values relate? 
+#### 1. How do the input keys-values, the intermediate keys-values, and the output keys-values relate? 
 
 The input key-value pairs are made by dividing the input data into smaller blocks and mapping those blocks with corresponding key-value pairs, while output key-value pairs are from the Reduce section of MapReduce. Hence the input keys and values are drawn from a different domain than the output keys and values.\
 Furthermore, the intermediate keys and values are from the same domain as the output keys and values, since the they are both outputs of functions which the inputs are in the type of key-value pairs.
 
-### 2. How does MapReduce deal with node failures?
+#### 2. How does MapReduce deal with node failures?
 - Worker Failure\
 The Master sets the status of its currently executing Reduce tasks to idle\
 If a worker node fails, the master reschedules the tasks handled by the worker.
 - Master Failure\
 The whole MapReduce job gets restarted through a different master
 
-### 3. What is the meaning and implication of locality? What does it use?
+#### 3. What is the meaning and implication of locality? What does it use?
 - The meaning of locality is the input data (managed by GFS) is stored on the local disks of the
 machines that make up the cluster. 
 - The implication is that it saves network bandwidth.
 - This process is used by the local disks 
 
-### 4. Which problem is addressed by introducing a combiner function to the MapReduce model?
+#### 4. Which problem is addressed by introducing a combiner function to the MapReduce model?
 - One disadvantage of MapReduce is its inefficiency and redundancy for some data processing tasks. 
 - MapReduce can generate a lot of intermediate data, which needs to be shuffled, sorted, and transferred between nodes.
 - Combiner function minimizes the number of key/value pairs that will be shuffled across the network and provided as input to the Reducer
