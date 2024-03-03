@@ -124,7 +124,7 @@ Here's the example for input and output. The details of the images are available
 
 ## 4. Bonus
 #### 4.1. Word Length Count
-In this section we will be categorize words using a simple program, the code is available at `teamLeft4Dead/src/section4.1/WordLength.java`.\
+In this section we will be categorize words using a simple program, the code is available at `teamLeft4Dead/src/section4.1/WordLength.java`.
 - Step 1: we start Hadoop as usual.
 <p align="center">
   <img src="./images/21127170/21127170_wordlength_starthadoop.png" />
