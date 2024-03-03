@@ -28,7 +28,16 @@ study of the original paper on the MapReduce concept. Lastly, there are optional
 |  4  |  Bonus | 4.1 Word Length Count | 100% |
 |     |        | 4.2 Setting up Fully Distributed Mode | 0% |
 
-
+### Reflection on our team:
+Installing and configurating Hadoop turned out to be more problematic on some devices, despite having followed the guides closely such as:\
+- Namenodes/datanodes not starting: SSH exited code 1 (directory not permitted access or in incosistent state) -> Overcome: custom configuration for namenode/datanode directories.\
+- RCMD configuration not matching: RCMD/socket permission denied -> Overcome: differences between RSH and SSH for additional configurations.[1]\
+- Bug series (especially in the case of multiple users): Connection permission denied (publickey/password); SSH exited code 255; port 9000 not opening (HDFS UI); namenode/datanodes recognized by JPS but not by yarn -> Overcome: not installing Hadoop into root directory (/usr/local/hadoop/), in order not to mess up SSH and file permission as much, especially for those who are not familiar with manual network configuration in Linux distributions.\
+- Hadoop crashing in usage due to low RAM -> Overcome: temporary virtual RAM, HDFS properties customization.[2]\
+\
+What we have learnt:\
+- Limiting error possibility through log files helps a lot in searching for (online) solutions, thus greatly reduces time and risk testing incorrect solutions.\
+\
 ## 1. Setting up Single-node Hadoop Cluster 
 In this exercise, each member has installed a single node Hadoop cluster by following the tutorial from Apache Hadoop’s official documentation. When following the tutorial, the student needs to take screenshots of the installation and verify if Hadoop is installed correctly. The evidence is shown as below. The details of the images are available in the path `/docs/images`
 
@@ -81,3 +90,8 @@ Output image:
 </p>
 
 ## 4. Bonus
+
+## 5. References
+[1] StackOverflow, 24 Jan 2018, "Permission Denied error while running start-dfs.sh", solution by "int32", https://stackoverflow.com/a/48415037
+
+[2] "SavvyNik", 25 Sep 2020, "How to Create, Resize, or Extend a Linux Swap File | (Ubuntu)", https://www.youtube.com/watch?v=HSbBl31ohjE&ab_channel=SavvyNik
