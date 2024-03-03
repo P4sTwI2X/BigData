@@ -1,6 +1,6 @@
 # Lab 01 Report: A Gentle Introduction to Hadoop
 
-### Teacher in charge: Nguyễn Ngọc Thảo (KHMT1)
+### Teacher in charge: Nguyễn Ngọc Thảo.
 
 | Lab Instructors     |  Email                       | 
 |---------------------|------------------------------|
