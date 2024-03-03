@@ -75,7 +75,7 @@ machines that make up the cluster.
 - Combiner function minimizes the number of key/value pairs that will be shuffled across the network and provided as input to the Reducer
 
 ## 3. Running a warm-up problem: Word Count 
-In this section, we follow the tutorial to get the Example WordCount v1.0 [4]. Then we compiled the code to a JAR file, then run them in the installed Hadoop cluster/instance\
+In this section, we follow the tutorial to get the Example WordCount v1.0 [3]. Then we compiled the code to a JAR file, then run them in the installed Hadoop cluster/instance\
 We run the example in 2 operating systems, Windows and Linux with the command:\
 `hadoop jar <.jar file> WordCount <input directory in HDFS>  <output directory in HDFS>`\
 Here's the example for input and output. The details of the images are available in the path `/docs/images`\
@@ -92,6 +92,8 @@ Output image:
 ## 4. Bonus
 
 ## 5. References
-[1] StackOverflow, 24 Jan 2018, "Permission Denied error while running start-dfs.sh", solution by "int32", https://stackoverflow.com/a/48415037
+[1] StackOverflow, 24 Jan 2018, "Permission Denied error while running start-dfs.sh", solution by "int32", https://stackoverflow.com/a/48415037, last visited: 1 Mar 2024
 
-[2] "SavvyNik", 25 Sep 2020, "How to Create, Resize, or Extend a Linux Swap File | (Ubuntu)", https://www.youtube.com/watch?v=HSbBl31ohjE&ab_channel=SavvyNik
+[2] SavvyNik, 25 Sep 2020, "How to Create, Resize, or Extend a Linux Swap File | (Ubuntu)", https://www.youtube.com/watch?v=HSbBl31ohjE&ab_channel=SavvyNik, last visited: 2 Mar 2024
+
+[3] Apache Hadoop, "MapReduce Tutorial", https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html, last visited: 2 Mar 2024
