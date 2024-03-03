@@ -4,12 +4,12 @@
 
 | Lab Instructors     |  Email                       | 
 |---------------------|------------------------------|
-| Đỗ Trọng Lễ         | dtle@selab.hcmus.edu.vn      |         
+| Đỗ Trọng Lễ         | dtle@selab.hcmus.edu.vn      |
 | Bùi Huỳnh Trung Nam | huynhtrungnam2001@gmail.com  |
 
 ### Group Name : Left4Dead
 | No. | Student ID | Student Name     |
-|-----|------------|----------------- |  
+|-----|------------|----------------- |
 |  1  |  21127329  | Châu Tấn Kiệt    |
 |  2  |  21127170  | Nguyễn Thế Thiện |
 |  3  |  21127642  | Trịnh Minh Long  |
@@ -21,7 +21,7 @@ study of the original paper on the MapReduce concept. Lastly, there are optional
 
 ## Lab Progress
 | No. | Task  | Expected output | Progress |
-|-----|-------|-------------|---------|  
+|-----|-------|-------------|---------|
 |  1  |  Setting up Single-node Hadoop Cluster | Students can install a Hadoop cluster/instance on their own device.  | 100% |
 |  2  |  Introduction to MapReduce  | Students can research new concepts to master how to express scientific concepts and understanding.  | 100% |
 |  3  |  Running a warm-up problem: Word Count | Students can verify their Hadoop cluster/instance is set up correctly and get used to run a MapReduce code in Hadoop.   | 100% |
@@ -123,6 +123,31 @@ Here's the example for input and output. The details of the images are available
 <b><p align="center">Result</p></b>
 
 ## 4. Bonus
+#### 4.1. Word Length Count
+In this section we will be categorize words using a simple program, the code is available at `teamLeft4Dead/src/section4.1/WordLength.java`.\
+- Step 1: we start Hadoop as usual.
+<p align="center">
+  <img src="./images/21127170/21127170_wordlength_starthadoop.png" />
+</p>
+
+- Step 2: we compile the `WordLength.java`
+<p align="center">
+  <img src="./images/21127170/21127170_wordlength_compile.png" />
+</p>
+
+- Step 3: we run the program.\
+This is the input.
+<p align="center">
+  <img src="./images/21127170/21127170_wordlength_input.png" />
+</p>
+We turn off safe mode as admin so we could run the program.
+<p align="center">
+  <img src="./images/21127170/21127170_wordlength_run.png" />
+</p>
+This is the output.
+<p align="center">
+  <img src="./images/21127170/21127170_wordlength_output.png" />
+</p>
 
 ## 5. References
 [1] StackOverflow, 24 Jan 2018, "Permission Denied error while running start-dfs.sh", solution by "int32", https://stackoverflow.com/a/48415037, last visited: 1 Mar 2024
