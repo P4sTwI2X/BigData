@@ -37,7 +37,7 @@ Installing and configurating Hadoop turned out to be more problematic on some de
 \
 What we have learnt:
 - Limiting error possibility through log files helps a lot in searching for (online) solutions, thus greatly reduces time and risk testing incorrect solutions.
-\
+
 ## 1. Setting up Single-node Hadoop Cluster 
 In this exercise, each member has installed a single node Hadoop cluster by following the tutorial from Apache Hadoop’s official documentation. When following the tutorial, the student needs to take screenshots of the installation and verify if Hadoop is installed correctly. The evidence is shown as below. The details of the images are available in the path `/docs/images`
 
