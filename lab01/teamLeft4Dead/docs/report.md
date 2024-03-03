@@ -78,16 +78,49 @@ machines that make up the cluster.
 In this section, we follow the tutorial to get the Example WordCount v1.0 [3]. Then we compiled the code to a JAR file, then run them in the installed Hadoop cluster/instance\
 We run the example in 2 operating systems, Windows and Linux with the command:\
 `hadoop jar <.jar file> WordCount <input directory in HDFS>  <output directory in HDFS>`\
-Here's the example for input and output. The details of the images are available in the path `/docs/images`\
-Input image: 
-<p align="center">
-  <img src="./images/21127329/input.jpg" />
-</p>
+Here's the example for input and output. The details of the images are available in the path `/docs/images`\:
 
-Output image:
+- Step 1: Create a file named “WordCount.java” in your hadoop folder <br>
+- Step 2: Copy code from the tutorial into the file
+- Step 3: Compile the java file into jar file with the command
+ <br> `jar cf <jar file name>.jar <word count file name>.java`
+  
 <p align="center">
-  <img src="./images/21127329/output.jpg" />
+  <img src="./images/21127642/create_input_file.png" />
 </p>
+<b><p align="center">Compile Java file</p></b>
+
+- Step 4: Create a input folder for our input file
+- Step 5: Create a input file anywhere you want
+
+<p align="center">
+  <img src="./images/21127642/input_file_content.png" />
+</p>
+<b><p align="center">The content of the input file</p></b>
+
+<p align="center">
+  <img src="./images/21127642/input_file.png" />
+</p>
+<b><p align="center">Putting input file inside the input folder</p></b>
+
+- Step 6: Put the input3.txt file into the input folder with the command
+ <br> `hdfs dfs -put <name of your input file>.txt <your input folder name>`
+- Step 7: Go into the hadoop folder and run the application with the command
+ <br> `hadoop jar <.jar file> WordCount <input directory in HDFS>  <output directory in HDFS>`
+- Step 8: Check the website for input and output folder.
+
+<p align="center">
+  <img src="./images/21127642/website_result.png" />
+</p>
+<b><p align="center">Website now should have both input folder and output folder</p></b>
+
+- Step 9: Open the terminal
+- Step 10: Enter command `hdfs dfs -cat /output/part-r-00000` to check the result.
+  
+<p align="center">
+  <img src="./images/21127642/word_count_result.png" />
+</p>
+<b><p align="center">Result</p></b>
 
 ## 4. Bonus
 
