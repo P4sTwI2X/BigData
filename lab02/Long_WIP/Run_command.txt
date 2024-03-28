@@ -1,0 +1,2 @@
+Run command:
+bin/hadoop(or something else) jar <jar file> <Class name> <input folder name> <output folder name> -skip <path/to/stopwords.txt>
