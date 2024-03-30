@@ -134,7 +134,7 @@ public class kMeansMain {
             job.setReducerClass(kMeansReducer.class);
 
             job.setOutputKeyClass(IntWritable.class);
-            job.setOutputValueClass(Point.class);
+            job.setOutputValueClass(Text.class);
 
             FileInputFormat.addInputPath(job, new Path(input_dir));
             FileOutputFormat.setOutputPath(job, new Path(output_iter));
@@ -164,7 +164,7 @@ public class kMeansMain {
                 job_final.setReducerClass(kMeansFinal.class);
 
                 job_final.setOutputKeyClass(IntWritable.class);
-                job_final.setOutputValueClass(Point.class);
+                job_final.setOutputValueClass(Text.class);
 
                 FileInputFormat.addInputPath(job_final, new Path(input_dir));
                 FileOutputFormat.setOutputPath(job_final, new Path(output_dir));

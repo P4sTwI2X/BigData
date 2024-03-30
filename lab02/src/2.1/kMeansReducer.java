@@ -19,18 +19,20 @@ import org.apache.hadoop.mapreduce.Reducer;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
-public class kMeansReducer extends Reducer<IntWritable, Point, Text, Text> {
+public class kMeansReducer extends Reducer<IntWritable, Text, Text, Text> {
     private final Text centroidValue = new Text();
     private final Text centroidId = new Text();
     
     @Override
-    protected void reduce(IntWritable centroid_id, Iterable<Point> values, Context context) throws IOException, InterruptedException {
+    protected void reduce(IntWritable centroid_id, Iterable<Text> values, Context context) throws IOException, InterruptedException {
         int count = 0;
         Point avg = new Point(0, 0);
-        for (Point val : values) {
-            System.err.println(val.getString(' '));
+        for (Text val_str : values) {
+            String[] val_strs = val_str.toString().split(" ", 2);
+            Point temp = new Point(val_strs);
+            //System.err.println(val.getString(' '));
             count ++;
-            avg.add(val);
+            avg.add(temp);
         }
         avg.divide(count);
 

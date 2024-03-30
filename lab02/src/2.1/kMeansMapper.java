@@ -19,7 +19,7 @@ import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
-public class kMeansMapper extends Mapper<Object, Text, IntWritable, Point> {
+public class kMeansMapper extends Mapper<Object, Text, IntWritable, Text> {
     
     @Override
     protected void map(Object key, Text value, Context context) throws IOException, InterruptedException {
@@ -49,7 +49,9 @@ public class kMeansMapper extends Mapper<Object, Text, IntWritable, Point> {
                 }
             }
 
-            context.write(new IntWritable(min_index), p);
+            Text p_str = new Text();
+            p_str.set(p.getString(' '));
+            context.write(new IntWritable(min_index), p_str);
         }
     }
 }
