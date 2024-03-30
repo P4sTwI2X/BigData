@@ -6,56 +6,56 @@ import java.util.Random;
 import org.apache.hadoop.io.Writable;
 
 public class Point implements Writable{
-    private float[] data = new float[2];
+    private float X, Y;
 
     public Point(){
-        data[0] = 0;
-        data[1] = 0;
+        this.X = 0.0f;
+        this.Y = 0.0f;
     }
 
     public Point(final float[] a){
         if(a.length == 2){
-            data[0] = a[0];
-            data[1] = a[1];
+            this.X = a[0];
+            this.Y = a[1];
         }
     }
 
     public Point(final float a, final float b){
-        this.data[0] = a;
-        this.data[1] = b;
+        this.X = a;
+        this.Y = b;
     }
 
     public Point(final String[] s){
         if(s.length == 2){
-            data[0] = Float.parseFloat(s[0]);
-            data[1] = Float.parseFloat(s[1]);
+            this.X = Float.parseFloat(s[0]);
+            this.Y = Float.parseFloat(s[1]);
         }
     }
 
     public static Point copy(final Point a){
-        Point temp = new Point(a.data);
+        Point temp = new Point(a.X, a.Y);
         return temp;
     }
 
     public String getString(final char delim){
-        return String.valueOf(data[0])+delim+String.valueOf(data[1]);
+        return String.valueOf(this.X) + delim + String.valueOf(this.Y);
     }
 
     public float distance_sqr(final Point other){
         // we use Euclidean here: i^2
         // Comment: I hate Java's double-float casting, compared to C.
-        float a = this.data[0] - other.data[0];
-        float b = this.data[1] - other.data[1];
+        float a = this.X - other.X;
+        float b = this.Y - other.Y;
         return a*a + b*b;
     }
 
-    public boolean equalFloats(final float a, final float b){
+    public boolean equalfloats(final float a, final float b){
         return Math.abs(a - b) < 0.00001F;
     }
 
     public boolean equal(final Point other){
-        return equalFloats(this.data[0], other.data[0]) &&
-        equalFloats(this.data[1], other.data[1]);
+        return equalfloats(this.X, other.X) &&
+        equalfloats(this.Y, other.Y);
     }
 
     public static Point randomPoint_inCircle(final Point center, final float rad){
@@ -70,20 +70,20 @@ public class Point implements Writable{
     }
 
     public void add(final Point other){
-        this.data[0] = this.data[0] + other.data[0];
-        this.data[1] = this.data[1] + other.data[1];
+        this.X = this.X + other.X;
+        this.Y = this.Y + other.Y;
     }
     
     public void divide(final float a){
-        this.data[0] /= a;
-        this.data[1] /= a;
+        this.X /= a;
+        this.Y /= a;
     }
 
     @Override
     public void write(final DataOutput out) throws IOException {
-        out.writeFloat(this.data[0]);
+        out.writeFloat(this.X);
         out.writeChar(' ');
-        out.writeFloat(this.data[1]);
+        out.writeFloat(this.Y);
     }
 
     @Override
@@ -91,7 +91,7 @@ public class Point implements Writable{
         float x = in.readFloat();
         float y = in.readFloat();
 
-        this.data[0] = x;
-        this.data[1] = y;
+        this.X = x;
+        this.Y = y;
     }
 }

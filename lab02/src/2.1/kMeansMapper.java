@@ -20,17 +20,17 @@ import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
 public class kMeansMapper extends Mapper<Object, Text, IntWritable, Point> {
-        
+    
     @Override
     protected void map(Object key, Text value, Context context) throws IOException, InterruptedException {
-        StringTokenizer tokenizer = new StringTokenizer(value.toString(), ",;\\. \t\n\r\f");
-        Point[] centroids;
+        StringTokenizer tokenizer = new StringTokenizer(value.toString()," \t\n");
 
         // read the centroids from context
-        int k_clusters = Integer.parseInt(context.getConfiguraion().get("k_clusters"));
+        int k_clusters = Integer.parseInt(context.getConfiguration().get("k_cluster"));
+        Point[] centroids = new Point[k_clusters];
         for(int i=0; i<k_clusters; i++){
-            String[] centroid = context.getConfiguraion().getStrings("centroid"+i);
-            centroids[i] = new Point(centroid);
+            String[] centroid = context.getConfiguration().get("centroid"+i).split(" ", 2);
+            centroids[i] = new Point(Float.parseFloat(centroid[0]), Float.parseFloat(centroid[1]));
         }
 
         // categorize data points

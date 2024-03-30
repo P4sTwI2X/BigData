@@ -42,10 +42,19 @@ public class kMeansMain {
     private static Point[] readCentroids(Configuration conf, int k, String path)
       throws IOException, FileNotFoundException {
 
+        // note: there's no guarantee that the number of centroids output is the same as k
+
         Point[] centroids = new Point[k];
         FileSystem hdfs = FileSystem.get(conf);
         FileStatus[] status = hdfs.listStatus(new Path(path));
 
+        // fill
+        for(int i=0; i<k; i++){
+            String[] conf_cen = conf.get("centroid"+i).split(" ", 2);
+            centroids[i] = new Point(Float.parseFloat(conf_cen[0]), Float.parseFloat(conf_cen[1]));
+        }
+
+        // actual read
         if(!status[0].getPath().toString().endsWith("_SUCCESS")){
             BufferedReader br = new BufferedReader(new InputStreamReader(hdfs.open(status[0].getPath())));
             
@@ -59,6 +68,22 @@ public class kMeansMain {
             }
 
             br.close();
+        }
+        return centroids;
+    }
+
+    private static void writeOutput_centroids(Configuration conf, int k, Point[] centroids, String path){
+        try{
+            FileSystem hdfs = FileSystem.get(conf);
+            FSDataOutputStream out = hdfs.create(new Path(path), true);
+            BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(out));
+            for(int i=0; i<k; i++){
+                bw.write(centroids[i].getString(' ') + "\n");
+            }
+            bw.close();
+        }
+        catch(IOException e){
+            System.err.println(e);
         }
     }
 
@@ -75,11 +100,13 @@ public class kMeansMain {
         // 7. In main: update input and output for iter
         // 8. Repeat step 2-7 till... you already know.
         // configurations
-
         // step 0
         if(args.length != 3){
-            System.out.println("Input parameters are not good");
+            System.err.println("Hi5");
             System.exit(1);
+        }
+        else{
+            System.err.println("Haello\n");
         }
 
         int k_cluster = Integer.parseInt(args[2]);
@@ -93,27 +120,27 @@ public class kMeansMain {
 
         for(int i=0; i<k_cluster; i++){
             conf.set("centroid"+i, centroids[i].getString(' '));
+            System.err.println(centroids[i].getString(' '));
         }
 
         // step 2-8
-        String input_iter = input_dir;
-        String output_iter = "iter_0";
+        String output_iter = "/temp/iter_0";
         for(int iter=0; true; iter++){
-            Job job = Job.getInstance(conf, output_iter);
+            Job job = Job.getInstance(conf, "output_iter");
             
             job.setJarByClass(kMeansMain.class);
             job.setMapperClass(kMeansMapper.class);
-            job.setCombinerClass(kMeansReducer.class);
+            //job.setCombinerClass(kMeansReducer.class);
             job.setReducerClass(kMeansReducer.class);
 
             job.setOutputKeyClass(IntWritable.class);
-            job.setOutputValueClass(Text.class);
+            job.setOutputValueClass(Point.class);
 
-            FileInputFormat.addInputPath(job, new Path(input_iter));
-            FileOutputFormat.addInputPath(job, new Path(output_iter));
+            FileInputFormat.addInputPath(job, new Path(input_dir));
+            FileOutputFormat.setOutputPath(job, new Path(output_iter));
 
             if(!job.waitForCompletion(true)){
-                System.out.println("Iter " + i + " failed.\n");
+                System.err.println("Exit at iter "+iter+ ".\n");
                 System.exit(1);
             }
 
@@ -129,6 +156,27 @@ public class kMeansMain {
             }
 
             if(complete){
+                // write class assignments (by making a final job)
+                Job job_final = Job.getInstance(conf, output_dir);
+            
+                job_final.setJarByClass(kMeansMain.class);
+                job_final.setMapperClass(kMeansMapper.class);
+                job_final.setReducerClass(kMeansFinal.class);
+
+                job_final.setOutputKeyClass(IntWritable.class);
+                job_final.setOutputValueClass(Point.class);
+
+                FileInputFormat.addInputPath(job_final, new Path(input_dir));
+                FileOutputFormat.setOutputPath(job_final, new Path(output_dir));
+
+                if(!job_final.waitForCompletion(true)){
+                    System.err.println("Exit at final iter.\n");
+                    System.exit(1);
+                }
+
+                // write cluster centers
+                writeOutput_centroids(conf, k_cluster, centroids, output_dir+"/task_2_1.clusters");
+
                 System.exit(0);
             }
             else{
@@ -140,8 +188,7 @@ public class kMeansMain {
             }
 
             // step 7
-            output_iter = "iter_" + String.valueOf(iter+1);
-            input_iter = "iter_" + String.valueOf(iter);
+            output_iter = "/temp/iter_" + String.valueOf(iter+1);
         }   
 
     }
