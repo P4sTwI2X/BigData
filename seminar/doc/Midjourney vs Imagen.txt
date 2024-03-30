@@ -1,8 +1,8 @@
 Midjourney vs Imagen: an analysis on the same and differences between the tools:
 
-- Problem: this is to find which tool is better on each use case in the text-to-image feature.
++ Problem: this is to find which tool is better on each use case in the text-to-image feature.
 
-- Toolify.ai
++ Toolify.ai
 
 Description:
 
@@ -30,4 +30,5 @@ Image by Google is expected to excel in generating images with accurate text ove
 
 Mid Journey shines when it comes to generating futuristic art and is highly regarded among professionals in the game development industry. It produces visually captivating images with intricate details, although the accuracy of text generation may be compromised.
 Image by Google shows great promise, with impressive precision in generating images and adding/editing text overlays. Although not widely available yet, it has the potential to revolutionize the image generation landscape once released.
+
 
