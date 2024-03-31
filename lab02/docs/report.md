@@ -158,4 +158,6 @@ Final Task:
 ## References
 - [1] seraogianluca (2021), https://github.com/seraogianluca/k-means-mapreduce/tree/master, last visited: Mar 29th, 2024.
 - [2] https://stackoverflow.com/questions/19012482/how-to-get-the-input-file-name-in-the-mapper-in-a-hadoop-program. Thanks Hans Brende for the workaround of getting input path
-- [3]
+- [3] https://www.geeksforgeeks.org/how-to-find-top-n-records-using-mapreduce/
+- [4] https://stackoverflow.com/questions/67085393/map-reduce-for-top-n-items/74056313#74056313
+- [5] https://slogix.in/source-code/hadoop-samples/how-to-calculate-tf-idf-using-mapreduce/
