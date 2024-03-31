@@ -36,8 +36,8 @@
   + stopwords.txt file.
 - Execution: ```bin/hadoop App.jar App <input/path> <output/path> -skip <path/to/stopwords/file>```
 - Job implementation:
-  1. Number of job counted: 54
-  2. Number of total input files: 2226
+  1. Number of mapper: 1
+  2. Number of reducer: 1
   3. Tasks:
     + Mapper:
       * It takes three parameters: Object key, Text value, and Context context. The key represents the input key, value represents the input value (usually a line of text), and context is used to emit output from the mapper.
