@@ -101,14 +101,11 @@ public class kMeansMain {
         // 8. Repeat step 2-7 till... you already know.
         // configurations
         // step 0
-        if(args.length != 3){
-            System.err.println("Hi5");
+        if(args.length != 4){
             System.exit(1);
         }
-        else{
-            System.err.println("Haello\n");
-        }
 
+        int iter_cap = Integer.parseInt(args[3]);
         int k_cluster = Integer.parseInt(args[2]);
         String input_dir = args[0];
         String output_dir = args[1];
@@ -120,12 +117,12 @@ public class kMeansMain {
 
         for(int i=0; i<k_cluster; i++){
             conf.set("centroid"+i, centroids[i].getString(' '));
-            System.err.println(centroids[i].getString(' '));
+            //System.err.println(centroids[i].getString(' '));
         }
 
         // step 2-8
         String output_iter = "/temp/iter_0";
-        for(int iter=0; true; iter++){
+        for(int iter=0; iter < iter_cap; iter++){
             Job job = Job.getInstance(conf, "output_iter");
             
             job.setJarByClass(kMeansMain.class);
@@ -156,28 +153,7 @@ public class kMeansMain {
             }
 
             if(complete){
-                // write class assignments (by making a final job)
-                Job job_final = Job.getInstance(conf, output_dir);
-            
-                job_final.setJarByClass(kMeansMain.class);
-                job_final.setMapperClass(kMeansMapper.class);
-                job_final.setReducerClass(kMeansFinal.class);
-
-                job_final.setOutputKeyClass(IntWritable.class);
-                job_final.setOutputValueClass(Text.class);
-
-                FileInputFormat.addInputPath(job_final, new Path(input_dir));
-                FileOutputFormat.setOutputPath(job_final, new Path(output_dir));
-
-                if(!job_final.waitForCompletion(true)){
-                    System.err.println("Exit at final iter.\n");
-                    System.exit(1);
-                }
-
-                // write cluster centers
-                writeOutput_centroids(conf, k_cluster, centroids, output_dir+"/task_2_1.clusters");
-
-                System.exit(0);
+                break;
             }
             else{
                 for(int j=0; j<k_cluster; j++){
@@ -191,5 +167,28 @@ public class kMeansMain {
             output_iter = "/temp/iter_" + String.valueOf(iter+1);
         }   
 
+
+        // final job to write class assignments
+        Job job_final = Job.getInstance(conf, output_dir);
+            
+        job_final.setJarByClass(kMeansMain.class);
+        job_final.setMapperClass(kMeansMapper.class);
+        job_final.setReducerClass(kMeansFinal.class);
+
+        job_final.setOutputKeyClass(IntWritable.class);
+        job_final.setOutputValueClass(Text.class);
+
+        FileInputFormat.addInputPath(job_final, new Path(input_dir));
+        FileOutputFormat.setOutputPath(job_final, new Path(output_dir));
+
+        if(!job_final.waitForCompletion(true)){
+            System.err.println("Exit at final iter.\n");
+            System.exit(1);
+        }
+
+        // write cluster centers
+        writeOutput_centroids(conf, k_cluster, centroids, output_dir+"/task_2_1.clusters");
+
+        System.exit(0);
     }
 }

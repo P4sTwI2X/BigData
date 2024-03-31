@@ -29,11 +29,6 @@
 |  2.2  |  K-Means on Preprocessed Data  |  Students can combine the applications of iterative algorithms and advanced calculations into MapReduce  |  0%  |
 |  2.3  |  Scalable K-Means++ Initialization  |  Students can combine the applications of iterative algorithms and advanced calculations into MapReduce  |  0%  |
 
-### Reflection on our team:
-Problems faced:
-What we have learnt:
-
-
 ## 1. Data preprocessing 
 #### 1.1. 
 #### 1.2.
@@ -41,8 +36,29 @@ What we have learnt:
 #### 1.4.
 #### 1.5.
 ## 2. K-Means Algorithm
-#### 2.1
-#### 2.2
-#### 2.3
+#### 2.1. K-Means on 2D data
+Data description: Data is only one text file consists of some 2D points. Each line consists of two float numbers divided by a space indicating the coordinations of a 2D point.
+  ![alt text](images/task_2_1/2.1_Input.png)
+
+For the use of a small input file, the number of mapper and reducer shall be 1 (one) for the job. The main idea is to initialize randomized unique centroids and then perform Iterative Task, either though a fixed number of times or until the centroids converges, then performs the Final Task to output the class assignments after checking and achieving the completion criterias through MapReduce, and output the final centroids through HDFS DataOutputStream.
+
+Iterative Task:
+- Mapper \(kMeansMapper.java\): Using the Mapper.Context class to contain centroids info, we input the datapoints from the input directory, convert them to a Point class object, and then calculate the closest centroid for each datapoint. Then we output the key-value pair of \<key=centroid_index, value=datapoint\> \[Int, Text\].
+
+- Reducer \(kMeansReducer.java\): Reducer shall group the key-value pairs that represent datapoints-centroids assignment, use that to calculate the average coordinations of such datapoints of a same group, resulting in new coordinations of the centroid of the group. We output the key-value pair of \<key=centroid_index, value=new_coordination\> \[Int, Text\] to folder \"\\temp\\iter_0\\", \"\\temp\\iter_1\\", ...
+
+![alt text](images/task_2_1/2.1_IterativeTask_output.png)
+
+Final Task:
+- Mapper \(kMeansMapper.java\): Same as Mapper in Iterative Task.
+- Reducer \(kMeansFinal.java\): We do not do anything except outputing every key-value pair of \<key=centroid_index, value=new_coordination\> we gain from the Mapper that already does the job of assigning points to centroids \(clusters\), to file \"\\output\\part-r-00000\".
+
+![alt text](images/task_2_1/2.1_FinalTask_output.png)
+
+- Challenges faced:
+>- **No prior experience in configuring a multi-task Hadoop job.** It was indeed difficult to think of and implement a way to pass shared variables such as the centroids between Mapper and Reducer, and between the MapReduce tasks. This took us the most days in this entire lab to figure out Context class and HDFS DataIOStream.
+
+#### 2.2.
+#### 2.3.
 ## References
 [1] StackOverflow, 24 Jan 2018, "Permission Denied error while running start-dfs.sh", solution by "int32", https://stackoverflow.com/a/48415037, last visited: 1 Mar 2024
