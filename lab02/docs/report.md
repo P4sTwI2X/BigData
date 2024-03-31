@@ -61,7 +61,7 @@
       ![a picture of Job completed](images/task_1_1/run_complete.png)
     - Extra information: <br>
       ![extra information](images/task_1_1/extra_information.png)
-    - Output files:
+    - Output files: <br>
       ![a picture of Output files](images/task_1_1/1_1_result.png)
    5. Challenges faced:
     >- Hard to implement the code for getting input path
