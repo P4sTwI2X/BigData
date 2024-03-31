@@ -67,9 +67,63 @@
     >- Hard to implement the code for getting input path
     >- Can't find any source for write the ouput to custom file. For example: "task_1_1.mtx" instead of "task_1_1-r-00000".
         (a lots of methods are from old version and won't work with my current hadoop version: 3.3.6)
-#### 1.2.
-#### 1.3.
-#### 1.4.
+#### 1.2. Low-Frequency Term Elimination
+ 1. Tasks:
+  + Mapper:
+    - Read the input file 
+    - Use Stringtokenizer to read each line
+    - Set the termID as key, docID and frequency as value
+  + Reducer: 
+    - Split the value to docID and frequency and put them into a Map
+    - Count the frequency of each term with the frequency
+    - If the frequency of the word is > 3, print out both the docID and frequency
+ 2. Challenges
+  >- At first I didn;'t know how to count without interfering the docID, but I realized there's a Map data type
+
+  - Output: 
+  ![alt text](image.png)
+#### 1.3. Top 10 Most Frequent Words
+ 1. Tasks:
+  + Mapper:
+    - Read the input file 
+    - Use Stringtokenizer to read each line
+    - Set the termID as key, frequency as value
+  + Reducer: 
+    - Initialize a TreeMap to store the word and its frequency
+    - Count the frequency of each term by adding the frequency 
+    - Put the termID and frequency to the TreeMap
+    - If length of TreeMap > 10, we remove its first key, or the smallest component
+    - Loop until 10 to show the top 10 most frequent terms
+ 2. Challenges
+  >- It's challenging to find the way to rank the frequency
+  - Output: 
+  ![alt text](image-1.png)
+Output: 
+#### 1.4. TF-IDF
+In this section, there are 2 Mappers and 2 Reducers
+  1. Tasks:
+  + Mapper 1:
+    - Read the input file 
+    - Use Stringtokenizer to read each line
+    - Set the docID as key, termID and frequency as value
+  + Reducer 1: 
+    - Initialize a TreeMap to store the word and its frequency
+    - Count the number of words in each document
+  - Output: 
+  ![alt text](image-2.png)
+  + Mapper 2:
+    - Read the input file 
+    - Use Stringtokenizer to read each line
+    - Set the docID as key, termID and frequency and docWords as value
+  + Reducer 2: 
+    - Calculate TF-IDF using the formula:
+    - `tf(t,d)`: count of t in d / number of words in d
+    - `idf(t)`: log(N/ df(t))
+    - `tf-idf` : `tf` * `idf`
+ 2. Challenges
+  >- I couldn't use 2 Mappers and Reducer and apply that into 1 output file, which means I have to create 1 text file as an intermediate file to the final output, this cost a large amount of disk usage.
+  - Output: 
+  ![alt text](image-3.png)
 #### 1.5.
 ## 2. K-Means Algorithm
 #### 2.1. K-Means on 2D data
