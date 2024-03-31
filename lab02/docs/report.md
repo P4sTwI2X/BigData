@@ -81,7 +81,7 @@
   >- At first I didn;'t know how to count without interfering the docID, but I realized there's a Map data type
 
   - Output: 
-  ![alt text](image.png)
+  ![alt text](./images/task_1_2/image.png)
 #### 1.3. Top 10 Most Frequent Words
  1. Tasks:
   + Mapper:
@@ -97,7 +97,7 @@
  2. Challenges
   >- It's challenging to find the way to rank the frequency
   - Output: 
-  ![alt text](image-1.png)
+  ![alt text](./images/task_1_3/image-1.png)
 Output: 
 #### 1.4. TF-IDF
 In this section, there are 2 Mappers and 2 Reducers
@@ -110,7 +110,7 @@ In this section, there are 2 Mappers and 2 Reducers
     - Initialize a TreeMap to store the word and its frequency
     - Count the number of words in each document
   - Output: 
-  ![alt text](image-2.png)
+  ![alt text](./images/task_1_4/image-2.png)
   + Mapper 2:
     - Read the input file 
     - Use Stringtokenizer to read each line
@@ -123,7 +123,7 @@ In this section, there are 2 Mappers and 2 Reducers
  2. Challenges
   >- I couldn't use 2 Mappers and Reducer and apply that into 1 output file, which means I have to create 1 text file as an intermediate file to the final output, this cost a large amount of disk usage.
   - Output: 
-  ![alt text](images/task_1_4/image-3.png)
+  ![alt text](./images/task_1_4/image-3.png)
 #### 1.5.
 ## 2. K-Means Algorithm
 #### 2.1. K-Means on 2D data
@@ -158,3 +158,4 @@ Final Task:
 ## References
 - [1] seraogianluca (2021), https://github.com/seraogianluca/k-means-mapreduce/tree/master, last visited: Mar 29th, 2024.
 - [2] https://stackoverflow.com/questions/19012482/how-to-get-the-input-file-name-in-the-mapper-in-a-hadoop-program. Thanks Hans Brende for the workaround of getting input path
+- [3]
