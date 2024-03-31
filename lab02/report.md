@@ -30,7 +30,7 @@
 |  2.3  |  Scalable K-Means++ Initialization  |  Students can combine the applications of iterative algorithms and advanced calculations into MapReduce  |  0%  |
 
 ## 1. Data preprocessing 
-#### 1.1. 
+#### 1.1. Text Cleaning and Term Frequency
 - Data description:
   + Multiple folders containing lots of input file in ".txt" format.
   + stopwords.txt file.
@@ -124,7 +124,8 @@ In this section, there are 2 Mappers and 2 Reducers
   >- I couldn't use 2 Mappers and Reducer and apply that into 1 output file, which means I have to create 1 text file as an intermediate file to the final output, this cost a large amount of disk usage.
   - Output: 
   ![alt text](./images/task_1_4/image-3.png)
-#### 1.5.
+#### 1.5. Highest average TF-IDF
+We did not accomplish this exercise.
 ## 2. K-Means Algorithm
 #### 2.1. K-Means on 2D data
 Note: The code is referenced based on [1]. Credit to "seraogianluca".
@@ -153,11 +154,16 @@ Final Task:
 - Challenges faced:
 >- **No prior experience in configuring a multi-task Hadoop job.** It was indeed difficult to think of and implement a way to pass shared variables such as the centroids between Mapper and Reducer, and between the MapReduce tasks. This took us the most days in this entire lab to figure out Context class and HDFS DataIOStream.
 
-#### 2.2.
-#### 2.3.
+#### 2.2. K-Means on Preprocessed Data
+We did not accomplish this exercise.
+#### 2.3. Scalable K-Means++ 
+We did not accomplish this exercise.
 ## References
 - [1] seraogianluca (2021), https://github.com/seraogianluca/k-means-mapreduce/tree/master, last visited: Mar 29th, 2024.
 - [2] https://stackoverflow.com/questions/19012482/how-to-get-the-input-file-name-in-the-mapper-in-a-hadoop-program. Thanks Hans Brende for the workaround of getting input path
+<<<<<<< HEAD:lab02/docs/report.md
 - [3] https://www.geeksforgeeks.org/how-to-find-top-n-records-using-mapreduce/
 - [4] https://stackoverflow.com/questions/67085393/map-reduce-for-top-n-items/74056313#74056313
 - [5] https://slogix.in/source-code/hadoop-samples/how-to-calculate-tf-idf-using-mapreduce/
+=======
+>>>>>>> 79d898d (Readyy to submit?):lab02/report.md
