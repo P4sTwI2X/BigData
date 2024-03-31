@@ -37,10 +37,15 @@
 #### 1.5.
 ## 2. K-Means Algorithm
 #### 2.1. K-Means on 2D data
+Note: The code is referenced based on [1]. Credit to "seraogianluca".
+
 Data description: Data is only one text file consists of some 2D points. Each line consists of two float numbers divided by a space indicating the coordinations of a 2D point.
   ![alt text](images/task_2_1/2.1_Input.png)
 
 For the use of a small input file, the number of mapper and reducer shall be 1 (one) for the job. The main idea is to initialize randomized unique centroids and then perform Iterative Task, either though a fixed number of times or until the centroids converges, then performs the Final Task to output the class assignments after checking and achieving the completion criterias through MapReduce, and output the final centroids through HDFS DataOutputStream.
+
+Execution: hadoop jar kMeansMain.jar kMeansMain /input /output \[num_of_clusters\] \[num_of_iterations\]
+![alt text](images/task_2_1/2.1_CommandLines.png)
 
 Iterative Task:
 - Mapper \(kMeansMapper.java\): Using the Mapper.Context class to contain centroids info, we input the datapoints from the input directory, convert them to a Point class object, and then calculate the closest centroid for each datapoint. Then we output the key-value pair of \<key=centroid_index, value=datapoint\> \[Int, Text\].
@@ -51,7 +56,7 @@ Iterative Task:
 
 Final Task:
 - Mapper \(kMeansMapper.java\): Same as Mapper in Iterative Task.
-- Reducer \(kMeansFinal.java\): We do not do anything except outputing every key-value pair of \<key=centroid_index, value=new_coordination\> we gain from the Mapper that already does the job of assigning points to centroids \(clusters\), to file \"\\output\\part-r-00000\".
+- Reducer \(kMeansFinal.java\): We do not do anything except outputing every key-value pair of \<key=centroid_index, value=new_coordination\> we gain from the Mapper that already does the job of assigning points to centroids \(clusters\), to file \"part-r-00000\" in the output directory.
 
 ![alt text](images/task_2_1/2.1_FinalTask_output.png)
 
@@ -61,4 +66,4 @@ Final Task:
 #### 2.2.
 #### 2.3.
 ## References
-[1] StackOverflow, 24 Jan 2018, "Permission Denied error while running start-dfs.sh", solution by "int32", https://stackoverflow.com/a/48415037, last visited: 1 Mar 2024
+[1] seraogianluca, https://github.com/seraogianluca/k-means-mapreduce/tree/master, last visited: Mar 29th, 2024.
