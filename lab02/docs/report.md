@@ -66,4 +66,4 @@ Final Task:
 #### 2.2.
 #### 2.3.
 ## References
-[1] seraogianluca, https://github.com/seraogianluca/k-means-mapreduce/tree/master, last visited: Mar 29th, 2024.
+[1] seraogianluca (2021), https://github.com/seraogianluca/k-means-mapreduce/tree/master, last visited: Mar 29th, 2024.
