@@ -123,7 +123,7 @@ In this section, there are 2 Mappers and 2 Reducers
  2. Challenges
   >- I couldn't use 2 Mappers and Reducer and apply that into 1 output file, which means I have to create 1 text file as an intermediate file to the final output, this cost a large amount of disk usage.
   - Output: 
-  ![alt text](image-3.png)
+  ![alt text](images/task_1_4/image-3.png)
 #### 1.5.
 ## 2. K-Means Algorithm
 #### 2.1. K-Means on 2D data
