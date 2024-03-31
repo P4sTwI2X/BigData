@@ -31,6 +31,42 @@
 
 ## 1. Data preprocessing 
 #### 1.1. 
+- Data description:
+  + Multiple folders containing lots of input file in ".txt" format.
+  + stopwords.txt file.
+- Execution: ```bin/hadoop App.jar App <input/path> <output/path> -skip <path/to/stopwords/file>```
+- Job implementation:
+  1. Number of job counted: 54
+  2. Number of total input files: 2226
+  3. Tasks:
+    + Mapper:
+      * It takes three parameters: Object key, Text value, and Context context. The key represents the input key, value represents the input value (usually a line of text), and context is used to emit output from the mapper.
+      * First the input text "value" is tonkenized using StringTokenizer library
+      * Then, we get the path of the input (path to the input file), then extract the name of the folder.
+      * Check if the name of the current file is "stopwords.txt", ignore all next processes if it true.
+      * Emits key-value pairs for each word, where the key includes the word and the folder name (Ex: "hello-economy"). This will be used in reducer to avoid counting duplicate word but is in another folder.
+      * Write key-value pairs to context.
+    + Reducer:
+      * Takes three parameters: key, values, and context.
+      * Iterates through the values, which are IntWritable objects.
+      * Sums up the values to calculate the total count for each key.
+      * Emits key-value pairs where the key look this this "hello  economy" (hello+"\t"+economy), and the value is the total count.
+      * Write key-value pairs to context.
+    + Final tasks:
+       * Then, write the values in context to output folder named "task_1_1-r-00000".
+  4. Results:
+    - Run command:
+      ![a picture of run command](images/task_1_1/run_command.png)
+    - Job completed:
+      ![a picture of Job completed](images/task_1_1/run_complete.png)
+    - Extra information: <br>
+      ![extra information](images/task_1_1/extra_information.png)
+    - Output files:
+      ![a picture of Output files](images/task_1_1/1_1_result.png)
+   5. Challenges faced:
+    >- Hard to implement the code for getting input path
+    >- Can't find any source for write the ouput to custom file. For example: "task_1_1.mtx" instead of "task_1_1-r-00000".
+        (a lots of methods are from old version and won't work with my current hadoop version: 3.3.6)
 #### 1.2.
 #### 1.3.
 #### 1.4.
@@ -66,4 +102,5 @@ Final Task:
 #### 2.2.
 #### 2.3.
 ## References
-[1] seraogianluca (2021), https://github.com/seraogianluca/k-means-mapreduce/tree/master, last visited: Mar 29th, 2024.
+- [1] seraogianluca (2021), https://github.com/seraogianluca/k-means-mapreduce/tree/master, last visited: Mar 29th, 2024.
+- [2] https://stackoverflow.com/questions/19012482/how-to-get-the-input-file-name-in-the-mapper-in-a-hadoop-program. Thanks Hans Brende for the workaround of getting input path
